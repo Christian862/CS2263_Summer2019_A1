@@ -11,7 +11,7 @@
 COMPILER = gcc
 
 # The C flags to pass to gcc
-C_FLAGS = -Wall -Wextra
+C_FLAGS = -Wall -Wextra -std=c99
 
 # prepend the command with '@' so that Make does not print the command before running it 
 help:
@@ -35,7 +35,7 @@ Stack.o: Stack.c
 
 ##################################################################
 # Test Cases
-test: exit_test push_test peek_test pop_test compound_test
+test: exit_test push_test peek_test pop_test compound_test test0
 
 ##############################
 # exit test cases
@@ -102,4 +102,9 @@ compound_test2: Stack
 compound_test3: Stack
 	./Stack < Data/compound_test3.input > compound_test3.result
 	./TestPassed.sh compound_test3.result Data/compound_test3.expected
+
+# extra test case
+test0: Stack
+	./Stack < Data/test0.input > test0.result
+	./TestPassed.sh test0.result Data/test0.expected
 
